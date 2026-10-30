@@ -50,3 +50,111 @@
   background-color: var(--primary);
   border-color: var(--primary);
 }
+
+/* --- CARD BRUTALISTA --- */
+.brutal-card {
+  background-color: var(--surface);
+  border: var(--border-width) solid var(--border-color);
+  padding: 30px;
+  /* L'ombra netta, senza blur, è la firma dello stile brutalista */
+  box-shadow: 12px 12px 0px var(--primary); 
+  margin-top: 30px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Interattività scattante */
+.brutal-card:hover {
+  transform: translate(6px, 6px);
+  box-shadow: 6px 6px 0px var(--primary);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  border-bottom: var(--border-width) solid var(--border-color);
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+
+.brutal-avatar {
+  width: 100px;
+  height: 100px;
+  border: var(--border-width) solid var(--border-color);
+  /* Applichiamo un filtro bianco e nero per drammaticità */
+  filter: grayscale(100%);
+  transition: filter 0.3s;
+}
+
+.brutal-card:hover .brutal-avatar {
+  filter: grayscale(0%);
+}
+
+.user-info h2 {
+  margin: 0 0 5px 0;
+  font-size: 2.2rem;
+  text-transform: uppercase;
+}
+
+.username {
+  margin: 0;
+  color: var(--primary);
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.bio {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+/* --- GRID DELLE STATISTICHE --- */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.stat-box {
+  border: var(--border-width) solid var(--border-color);
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--bg-color);
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: #999;
+  margin-bottom: 5px;
+  letter-spacing: 1px;
+}
+
+.stat-value {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--text);
+}
+
+/* --- BOTTONE LINK --- */
+.brutal-btn-link {
+  display: block;
+  text-align: center;
+  background-color: var(--primary);
+  color: var(--bg-color);
+  border: var(--border-width) solid var(--primary);
+  padding: 15px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  transition: all 0.2s;
+}
+
+.brutal-btn-link:hover {
+  background-color: var(--bg-color);
+  color: var(--primary);
+}
