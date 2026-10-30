@@ -1,12 +1,18 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component } from '@angular/core';
 
 @Component({
-  imports: [RouterOutlet],
   selector: 'app-root',
-  styleUrl: './app.css',
+  standalone: true,
   templateUrl: './app.html',
+  styleUrl: './app.css'
 })
 export class App {
-  protected readonly title = signal('github-finder');
+  
+  cercaUtente(username: string) {
+    if (!username.trim()) return;
+    
+    // Quando premiamo invio o clicchiamo "Cerca", stamperà qui il nome
+    console.log("Stai cercando l'utente:", username);
+  }
+  
 }

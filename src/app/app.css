@@ -1,0 +1,52 @@
+.app-container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 0 20px;
+}
+
+.app-title {
+  font-size: 3rem;
+  text-transform: uppercase;
+  border-bottom: var(--border-width) solid var(--text);
+  padding-bottom: 10px;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.search-box {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 40px;
+}
+
+.brutal-input {
+  flex-grow: 1;
+  background-color: var(--surface);
+  color: var(--text);
+  border: var(--border-width) solid var(--border-color);
+  padding: 15px;
+  font-size: 1.2rem;
+  font-family: inherit;
+}
+
+.brutal-input:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.brutal-btn {
+  background-color: var(--text);
+  color: var(--bg-color);
+  border: var(--border-width) solid var(--text);
+  padding: 0 30px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.brutal-btn:hover {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
