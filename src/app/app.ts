@@ -5,31 +5,31 @@ import { GithubUser } from '../models/github-user';
 @Component({
   selector: 'app-root',
   standalone: true,
-  templateUrl: './app.html', /* Uso i nomi che avevi prima */
+  templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
-  // 1. Variabili per salvare i dati o l'errore
   utenteCorrente: GithubUser | null = null;
   errore: boolean = false;
+  inCaricamento: boolean = false; // 1. NUOVA VARIABILE
 
-  // 2. Iniettiamo il nostro servizio
   constructor(private githubService: GithubService) {}
   
   cercaUtente(username: string) {
     if (!username.trim()) return;
     
-    // 3. Resettiamo la vista prima di ogni ricerca
     this.utenteCorrente = null;
     this.errore = false;
+    this.inCaricamento = true; // 2. INIZIA IL CARICAMENTO
     
-    // 4. Facciamo la vera chiamata HTTP e ci "abboniamo" (subscribe) alla risposta
     this.githubService.searchUser(username).subscribe({
       next: (dati) => {
-        this.utenteCorrente = dati; // Successo: salviamo i dati!
+        this.utenteCorrente = dati;
+        this.inCaricamento = false; // 3. FINITO (SUCCESSO)
       },
       error: (err) => {
-        this.errore = true; // Fallimento: utente non trovato
+        this.errore = true;
+        this.inCaricamento = false; // 3. FINITO (ERRORE)
         console.error(err);
       }
     });

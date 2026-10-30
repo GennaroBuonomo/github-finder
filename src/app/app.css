@@ -158,3 +158,45 @@
   background-color: var(--bg-color);
   color: var(--primary);
 }
+
+/* --- ANIMAZIONE DI CARICAMENTO --- */
+.loading-text {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 2rem;
+  color: var(--primary);
+  text-transform: uppercase;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* --- RESPONSIVITÀ PER SMARTPHONE --- */
+@media (max-width: 600px) {
+  
+  /* Incolonna i 3 blocchi delle statistiche (da 3 colonne a 1) */
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  /* Impila l'input di testo e il bottone di ricerca */
+  .search-box {
+    flex-direction: column;
+  }
+  
+  /* Centra l'avatar e il nome utente in verticale */
+  .card-header {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  /* Adegua un po' il titolo dell'app */
+  .app-title {
+    font-size: 2rem;
+  }
+  
+}

@@ -14,36 +14,50 @@
     </button>
   </div>
   
-  <!-- SCHEDA UTENTE -->
-  <div class="brutal-card">
-    
-    <div class="card-header">
-      <img src="https://avatars.githubusercontent.com/u/9919?v=4" alt="Avatar" class="brutal-avatar">
-      <div class="user-info">
-        <h2>GitHub</h2>
-        <p class="username">&#64;github</p>
-      </div>
-    </div>
-    
-    <p class="bio">Costruiamo software per sviluppatori. Questo è un testo temporaneo per testare il design della scheda.</p>
-    
-    <!-- CSS Grid in azione -->
-    <div class="stats-grid">
-      <div class="stat-box">
-        <span class="stat-label">REPOS</span>
-        <span class="stat-value">402</span>
-      </div>
-      <div class="stat-box">
-        <span class="stat-label">FOLLOWER</span>
-        <span class="stat-value">3.5M</span>
-      </div>
-      <div class="stat-box">
-        <span class="stat-label">FOLLOWING</span>
-        <span class="stat-value">0</span>
-      </div>
-    </div>
+  <!-- 1. STATO DI CARICAMENTO -->
+  @if (inCaricamento) {
+    <h2 class="loading-text">RICERCA IN CORSO...</h2>
+  }
 
-    <a href="#" class="brutal-btn-link">Vedi Profilo GitHub</a>
-    
-  </div>
+  <!-- 2. STATO DI ERRORE -->
+  @if (errore) {
+    <h2 style="color: #ff3333; text-align: center; margin-top: 40px;">
+      UTENTE NON TROVATO 💀
+    </h2>
+  }
+  
+  <!-- 3. SCHEDA UTENTE CON DATI REALI -->
+  @if (utenteCorrente) {
+    <div class="brutal-card">
+      
+      <div class="card-header">
+        <img [src]="utenteCorrente.avatar_url" alt="Avatar" class="brutal-avatar">
+        <div class="user-info">
+          <h2>{{ utenteCorrente.name || utenteCorrente.login }}</h2>
+          <p class="username">&#64;{{ utenteCorrente.login }}</p>
+        </div>
+      </div>
+      
+      <p class="bio">{{ utenteCorrente.bio || 'Questo utente preferisce il silenzio. Nessuna bio.' }}</p>
+      
+      <!-- CSS Grid -->
+      <div class="stats-grid">
+        <div class="stat-box">
+          <span class="stat-label">REPOS</span>
+          <span class="stat-value">{{ utenteCorrente.public_repos }}</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-label">FOLLOWER</span>
+          <span class="stat-value">{{ utenteCorrente.followers }}</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-label">FOLLOWING</span>
+          <span class="stat-value">{{ utenteCorrente.following }}</span>
+        </div>
+      </div>
+
+      <a [href]="utenteCorrente.html_url" target="_blank" class="brutal-btn-link">Vedi Profilo GitHub</a>
+      
+    </div>
+  }
 </main>
