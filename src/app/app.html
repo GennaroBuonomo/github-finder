@@ -3,13 +3,13 @@
   
   <div class="search-box">
     <input 
-      #usernameInput 
-      type="text" 
-      class="brutal-input" 
-      placeholder="Inserisci uno username GitHub..."
-      (keyup.enter)="cercaUtente(usernameInput.value)"
+    #usernameInput 
+    type="text" 
+    class="brutal-input" 
+    placeholder="Inserisci uno username GitHub..."
+    (keyup.enter)="cercaUtente(usernameInput)" 
     >
-    <button class="brutal-btn" (click)="cercaUtente(usernameInput.value)">
+    <button class="brutal-btn" (click)="cercaUtente(usernameInput)">
       CERCA
     </button>
   </div>
