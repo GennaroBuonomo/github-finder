@@ -11,25 +11,30 @@ import { GithubUser } from '../models/github-user';
 export class App {
   utenteCorrente: GithubUser | null = null;
   errore: boolean = false;
-  inCaricamento: boolean = false; // 1. NUOVA VARIABILE
+  inCaricamento: boolean = false;
 
   constructor(private githubService: GithubService) {}
   
-  cercaUtente(username: string) {
+  // Ora riceviamo l'intero input HTML, non solo la stringa
+  cercaUtente(inputElement: HTMLInputElement) {
+    const username = inputElement.value; // Estraiamo il testo
+    
     if (!username.trim()) return;
     
     this.utenteCorrente = null;
     this.errore = false;
-    this.inCaricamento = true; // 2. INIZIA IL CARICAMENTO
+    this.inCaricamento = true; 
     
     this.githubService.searchUser(username).subscribe({
       next: (dati) => {
         this.utenteCorrente = dati;
-        this.inCaricamento = false; // 3. FINITO (SUCCESSO)
+        this.inCaricamento = false; 
+        inputElement.value = ''; // 2. SVUOTA L'INPUT IN CASO DI SUCCESSO
       },
       error: (err) => {
         this.errore = true;
-        this.inCaricamento = false; // 3. FINITO (ERRORE)
+        this.inCaricamento = false; 
+        inputElement.value = ''; // 3. SVUOTA L'INPUT ANCHE IN CASO DI ERRORE
         console.error(err);
       }
     });
